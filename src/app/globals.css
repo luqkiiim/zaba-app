@@ -81,10 +81,7 @@ body {
 .modal-card {
   width: 100%;
   margin: 0;
-  max-height: calc(100svh - max(1.75rem, env(safe-area-inset-top) + env(safe-area-inset-bottom) + 1.75rem));
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
+  min-width: 0;
 }
 
 @media (min-width: 640px) {
@@ -94,8 +91,22 @@ body {
 
   .modal-card {
     margin: auto 0;
-    max-height: calc(100dvh - max(2.25rem, env(safe-area-inset-top) + env(safe-area-inset-bottom) + 2rem));
   }
+}
+
+.modal-card input,
+.modal-card select,
+.modal-card textarea {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.modal-card input[type="date"],
+.modal-card input[type="time"] {
+  min-inline-size: 0;
+  font-size: 16px;
 }
 
 .glass-panel-hover {
