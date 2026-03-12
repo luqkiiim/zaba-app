@@ -69,10 +69,10 @@ body {
   justify-content: center;
   align-items: flex-start;
   overflow-y: auto;
-  padding-top: max(1.25rem, calc(env(safe-area-inset-top) + 1rem));
-  padding-right: 1rem;
-  padding-bottom: max(1rem, calc(env(safe-area-inset-bottom) + 1rem));
-  padding-left: 1rem;
+  padding-top: max(0.875rem, calc(env(safe-area-inset-top) + 0.75rem));
+  padding-right: 0.75rem;
+  padding-bottom: max(0.875rem, calc(env(safe-area-inset-bottom) + 0.75rem));
+  padding-left: 0.75rem;
   background: rgb(0 0 0 / 0.6);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -80,14 +80,21 @@ body {
 
 .modal-card {
   width: 100%;
-  margin: auto 0;
-  max-height: calc(100dvh - max(2.5rem, env(safe-area-inset-top) + env(safe-area-inset-bottom) + 2rem));
+  margin: 0;
+  max-height: calc(100svh - max(1.75rem, env(safe-area-inset-top) + env(safe-area-inset-bottom) + 1.75rem));
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 @media (min-width: 640px) {
   .modal-overlay {
     align-items: center;
+  }
+
+  .modal-card {
+    margin: auto 0;
+    max-height: calc(100dvh - max(2.25rem, env(safe-area-inset-top) + env(safe-area-inset-bottom) + 2rem));
   }
 }
 

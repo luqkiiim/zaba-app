@@ -205,18 +205,18 @@ export default function PaymentsPage() {
 
       {isModalOpen && (
         <div className="modal-overlay animate-fade-in">
-          <div className="modal-card glass-panel relative max-w-md border-t-2 border-[var(--color-primary-500)] p-6 shadow-2xl">
+          <div className="modal-card glass-panel relative max-w-md border-t-2 border-[var(--color-primary-500)] p-4 shadow-2xl sm:p-6">
             <button
               onClick={() => setIsModalOpen(false)}
               className="absolute right-4 top-4 text-gray-400 hover:text-white"
             >
               <X size={20} />
             </button>
-            <h2 className="mb-6 flex items-center gap-2 text-xl font-bold">
+            <h2 className="mb-4 flex items-center gap-2 pr-10 text-xl font-bold sm:mb-6">
               <Wallet className="text-[var(--color-primary-500)]" /> Log Receipt
             </h2>
 
-            <form onSubmit={handleAddPayment} className="space-y-4">
+            <form onSubmit={handleAddPayment} className="space-y-3 sm:space-y-4">
               <div>
                 <label className="mb-1 block text-sm font-medium text-gray-400">Student</label>
                 <select
@@ -236,7 +236,7 @@ export default function PaymentsPage() {
                 </select>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                 <div>
                   <label className="mb-1 block text-sm font-medium text-gray-400">Amount ($)</label>
                   <input
@@ -246,7 +246,7 @@ export default function PaymentsPage() {
                     step="0.01"
                     min="0"
                     placeholder="0.00"
-                    className="w-full rounded-lg border border-[var(--color-surface-border)] bg-[var(--color-surface)] px-3 py-2 text-lg font-bold text-[var(--color-primary-500)] text-white focus:border-[var(--color-primary-500)] focus:outline-none"
+                    className="w-full rounded-lg border border-[var(--color-surface-border)] bg-[var(--color-surface)] px-3 py-2 font-bold text-[var(--color-primary-500)] text-white focus:border-[var(--color-primary-500)] focus:outline-none sm:text-lg"
                   />
                 </div>
                 <div>
@@ -261,7 +261,7 @@ export default function PaymentsPage() {
                 </div>
               </div>
 
-              <div className="mt-2 grid grid-cols-2 gap-4 border-t border-[var(--color-surface-border)] pt-4">
+              <div className="mt-2 grid grid-cols-1 gap-3 border-t border-[var(--color-surface-border)] pt-3 sm:grid-cols-2 sm:gap-4 sm:pt-4">
                 <div>
                   <label className="mb-1 block text-sm font-medium text-gray-400">Payment Type</label>
                   <select
@@ -298,18 +298,18 @@ export default function PaymentsPage() {
                 />
               </div>
 
-              <div className="flex justify-end gap-3 pt-4">
+              <div className="flex flex-col-reverse gap-2 pt-2 sm:flex-row sm:justify-end sm:gap-3 sm:pt-4">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="rounded-lg px-4 py-2 text-gray-400 transition-colors hover:text-white"
+                  className="w-full rounded-lg px-4 py-2 text-gray-400 transition-colors hover:text-white sm:w-auto"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={saving || students.length === 0}
-                  className="flex items-center gap-2 rounded-lg bg-[var(--color-primary-500)] px-4 py-2 font-bold text-gray-900 shadow-[0_0_15px_var(--color-primary-glow)] transition-colors hover:bg-[var(--color-primary-600)] disabled:cursor-not-allowed disabled:opacity-60"
+                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-[var(--color-primary-500)] px-4 py-2 font-bold text-gray-900 shadow-[0_0_15px_var(--color-primary-glow)] transition-colors hover:bg-[var(--color-primary-600)] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                 >
                   <CheckCircle2 size={18} /> {saving ? 'Saving...' : 'Save Payment'}
                 </button>

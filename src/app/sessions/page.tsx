@@ -303,16 +303,16 @@ export default function SessionsPage() {
 
       {isModalOpen && (
         <div className="modal-overlay animate-fade-in">
-          <div className="modal-card glass-panel relative max-w-md p-6 shadow-2xl">
+          <div className="modal-card glass-panel relative max-w-md p-4 shadow-2xl sm:p-6">
             <button
               onClick={() => setIsModalOpen(false)}
               className="absolute right-4 top-4 text-gray-400 hover:text-white"
             >
               <X size={20} />
             </button>
-            <h2 className="mb-6 text-xl font-bold">Schedule New Session</h2>
+            <h2 className="mb-4 pr-10 text-xl font-bold sm:mb-6">Schedule New Session</h2>
 
-            <form onSubmit={handleAddSession} className="space-y-4">
+            <form onSubmit={handleAddSession} className="space-y-3 sm:space-y-4">
               <div>
                 <label className="mb-1 block text-sm font-medium text-gray-400">Session Title</label>
                 <input
@@ -324,7 +324,7 @@ export default function SessionsPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                 <div>
                   <label className="mb-1 block text-sm font-medium text-gray-400">Date</label>
                   <input
@@ -346,7 +346,7 @@ export default function SessionsPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                 <div>
                   <label className="mb-1 block text-sm font-medium text-gray-400">Location</label>
                   <input
@@ -368,18 +368,18 @@ export default function SessionsPage() {
                 </div>
               </div>
 
-              <div className="flex justify-end gap-3 pt-4">
+              <div className="flex flex-col-reverse gap-2 pt-2 sm:flex-row sm:justify-end sm:gap-3 sm:pt-4">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="rounded-lg px-4 py-2 text-gray-400 transition-colors hover:text-white"
+                  className="w-full rounded-lg px-4 py-2 text-gray-400 transition-colors hover:text-white sm:w-auto"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={saving}
-                  className="rounded-lg bg-[var(--color-secondary-500)] px-4 py-2 font-bold text-white shadow-[0_0_15px_var(--color-secondary-glow)] transition-colors hover:bg-[var(--color-secondary-600)] disabled:cursor-not-allowed disabled:opacity-60"
+                  className="w-full rounded-lg bg-[var(--color-secondary-500)] px-4 py-2 font-bold text-white shadow-[0_0_15px_var(--color-secondary-glow)] transition-colors hover:bg-[var(--color-secondary-600)] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                 >
                   {saving ? 'Saving...' : 'Schedule'}
                 </button>
@@ -391,13 +391,13 @@ export default function SessionsPage() {
 
       {isEditModalOpen && selectedSession && (
         <div className="modal-overlay animate-fade-in">
-          <div className="modal-card glass-panel relative max-w-md p-6 shadow-2xl">
+          <div className="modal-card glass-panel relative max-w-md p-4 shadow-2xl sm:p-6">
             <button onClick={closeEditModal} className="absolute right-4 top-4 text-gray-400 hover:text-white">
               <X size={20} />
             </button>
-            <h2 className="mb-6 text-xl font-bold">Edit Session Details</h2>
+            <h2 className="mb-4 pr-10 text-xl font-bold sm:mb-6">Edit Session Details</h2>
 
-            <form onSubmit={handleEditSession} className="space-y-4">
+            <form onSubmit={handleEditSession} className="space-y-3 sm:space-y-4">
               <div>
                 <label className="mb-1 block text-sm font-medium text-gray-400">Session Title</label>
                 <input
@@ -409,7 +409,7 @@ export default function SessionsPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                 <div>
                   <label className="mb-1 block text-sm font-medium text-gray-400">Date</label>
                   <input
@@ -432,7 +432,7 @@ export default function SessionsPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                 <div>
                   <label className="mb-1 block text-sm font-medium text-gray-400">Location</label>
                   <input
@@ -454,18 +454,18 @@ export default function SessionsPage() {
                 </div>
               </div>
 
-              <div className="flex justify-end gap-3 pt-4">
+              <div className="flex flex-col-reverse gap-2 pt-2 sm:flex-row sm:justify-end sm:gap-3 sm:pt-4">
                 <button
                   type="button"
                   onClick={closeEditModal}
-                  className="rounded-lg px-4 py-2 text-gray-400 transition-colors hover:text-white"
+                  className="w-full rounded-lg px-4 py-2 text-gray-400 transition-colors hover:text-white sm:w-auto"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={saving}
-                  className="flex items-center gap-2 rounded-lg bg-[var(--color-secondary-500)] px-4 py-2 font-bold text-white shadow-[0_0_15px_var(--color-secondary-glow)] transition-colors hover:bg-[var(--color-secondary-600)] disabled:cursor-not-allowed disabled:opacity-60"
+                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-[var(--color-secondary-500)] px-4 py-2 font-bold text-white shadow-[0_0_15px_var(--color-secondary-glow)] transition-colors hover:bg-[var(--color-secondary-600)] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                 >
                   <Save size={18} /> {saving ? 'Saving...' : 'Save Changes'}
                 </button>
@@ -477,21 +477,21 @@ export default function SessionsPage() {
 
       {isAttendanceModalOpen && selectedSession && (
         <div className="modal-overlay animate-fade-in">
-          <div className="modal-card glass-panel relative max-w-md border-t-2 border-[var(--color-primary-500)] p-6 shadow-2xl">
+          <div className="modal-card glass-panel relative max-w-md border-t-2 border-[var(--color-primary-500)] p-4 shadow-2xl sm:p-6">
             <button
               onClick={closeAttendanceModal}
               className="absolute right-4 top-4 text-gray-400 hover:text-white"
             >
               <X size={20} />
             </button>
-            <h2 className="mb-2 flex items-center gap-2 text-xl font-bold">
+            <h2 className="mb-2 flex items-center gap-2 pr-10 text-xl font-bold">
               <CheckSquare className="text-[var(--color-primary-500)]" /> Mark Attendance
             </h2>
-            <p className="mb-6 text-sm text-gray-400">
+            <p className="mb-4 text-sm text-gray-400 sm:mb-6">
               {selectedSession.title} ({selectedSession.date})
             </p>
 
-            <div className="mb-6 max-h-60 space-y-2 overflow-y-auto pr-2">
+            <div className="mb-4 max-h-[36svh] space-y-2 overflow-y-auto pr-2 sm:mb-6 sm:max-h-60">
               {students.length === 0 ? (
                 <p className="py-4 text-center text-sm text-gray-400">
                   No students available. Add some in the Students tab first.
@@ -543,24 +543,24 @@ export default function SessionsPage() {
               )}
             </div>
 
-            <div className="mb-6 rounded-lg border border-[var(--color-warning-500)]/20 bg-[var(--color-warning-500)]/10 p-3">
+            <div className="mb-4 rounded-lg border border-[var(--color-warning-500)]/20 bg-[var(--color-warning-500)]/10 p-3 sm:mb-6">
               <p className="text-xs text-[var(--color-warning-500)]">
                 <strong>Note:</strong> Saving attendance will automatically deduct 1 quota from
                 any newly checked student, and refund 1 quota to any unchecked student.
               </p>
             </div>
 
-            <div className="flex justify-end gap-3 border-t border-[var(--color-surface-border)] pt-4">
+            <div className="flex flex-col-reverse gap-2 border-t border-[var(--color-surface-border)] pt-3 sm:flex-row sm:justify-end sm:gap-3 sm:pt-4">
               <button
                 onClick={closeAttendanceModal}
-                className="rounded-lg px-4 py-2 text-gray-400 transition-colors hover:text-white"
+                className="w-full rounded-lg px-4 py-2 text-gray-400 transition-colors hover:text-white sm:w-auto"
               >
                 Cancel
               </button>
               <button
                 onClick={saveAttendance}
                 disabled={saving}
-                className="rounded-lg bg-[var(--color-primary-500)] px-4 py-2 font-bold text-gray-900 shadow-[0_0_15px_var(--color-primary-glow)] transition-colors hover:bg-[var(--color-primary-600)] disabled:cursor-not-allowed disabled:opacity-60"
+                className="w-full rounded-lg bg-[var(--color-primary-500)] px-4 py-2 font-bold text-gray-900 shadow-[0_0_15px_var(--color-primary-glow)] transition-colors hover:bg-[var(--color-primary-600)] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
               >
                 {saving ? 'Saving...' : `Save Attendance (${tempAttendance.length})`}
               </button>
