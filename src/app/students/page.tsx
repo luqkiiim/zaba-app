@@ -199,15 +199,15 @@ export default function StudentsPage() {
 
       {isModalOpen && (
         <div className="modal-overlay animate-fade-in">
-          <div className="modal-card glass-panel relative max-w-md p-4 shadow-2xl sm:p-6">
+          <div className="modal-card glass-panel relative max-w-md p-3 shadow-2xl sm:p-6">
             <button onClick={closeModal} className="absolute right-4 top-4 text-gray-400 hover:text-white">
               <X size={20} />
             </button>
-            <h2 className="mb-4 pr-10 text-xl font-bold sm:mb-6">
+            <h2 className="mb-3 pr-10 text-xl font-bold sm:mb-6">
               {editingStudent ? 'Edit Student' : 'Add New Student'}
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-2.5 sm:space-y-4">
               <div>
                 <label className="mb-1 block text-sm font-medium text-gray-400">Full Name</label>
                 <input
@@ -219,7 +219,7 @@ export default function StudentsPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="mb-1 block text-sm font-medium text-gray-400">Level</label>
                   <select
@@ -259,24 +259,24 @@ export default function StudentsPage() {
                 <label className="mb-1 block text-sm font-medium text-gray-400">Private Coach Notes (Optional)</label>
                 <textarea
                   name="notes"
-                  rows={3}
+                  rows={2}
                   defaultValue={editingStudent?.notes ?? ''}
                   className="w-full resize-none rounded-lg border border-[var(--color-surface-border)] bg-[var(--color-surface)] px-3 py-2 text-white focus:border-[var(--color-primary-500)] focus:outline-none"
                 />
               </div>
 
-              <div className="flex flex-col-reverse gap-2 pt-2 sm:flex-row sm:justify-end sm:gap-3 sm:pt-4">
+              <div className="flex gap-2 pt-1.5 sm:justify-end sm:gap-3 sm:pt-4">
                 <button
                   type="button"
                   onClick={closeModal}
-                  className="w-full rounded-lg px-4 py-2 text-gray-400 transition-colors hover:text-white sm:w-auto"
+                  className="flex-1 rounded-lg px-4 py-2 text-gray-400 transition-colors hover:text-white sm:w-auto sm:flex-none"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={saving}
-                  className="w-full rounded-lg bg-[var(--color-primary-500)] px-4 py-2 font-bold text-gray-900 shadow-[0_0_15px_var(--color-primary-glow)] transition-colors hover:bg-[var(--color-primary-600)] sm:w-auto"
+                  className="flex-1 rounded-lg bg-[var(--color-primary-500)] px-4 py-2 font-bold text-gray-900 shadow-[0_0_15px_var(--color-primary-glow)] transition-colors hover:bg-[var(--color-primary-600)] sm:w-auto sm:flex-none"
                 >
                   {saving ? 'Saving...' : 'Save Student'}
                 </button>
