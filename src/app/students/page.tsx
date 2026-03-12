@@ -92,7 +92,7 @@ export default function StudentsPage() {
   );
 
   return (
-    <div className="relative flex h-full flex-col space-y-6 animate-fade-in">
+    <div className="relative flex min-h-full flex-col space-y-6 animate-fade-in">
       <header className="sticky top-0 z-10 flex items-center justify-between border-b border-[var(--color-surface-border)] bg-[var(--color-background)] pb-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Students</h1>

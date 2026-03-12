@@ -38,7 +38,7 @@ export default function AppShell({ children }: AppShellProps) {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   return (
-    <div className="min-h-screen md:flex">
+    <div className="min-h-screen md:flex md:items-stretch">
       <div className="border-b border-[var(--color-surface-border)] bg-[var(--color-background)]/95 backdrop-blur md:hidden">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4">
           <BrandMark />
@@ -87,8 +87,8 @@ export default function AppShell({ children }: AppShellProps) {
         </div>
       </div>
 
-      <main className="relative min-w-0 flex-1 p-4 md:h-screen md:overflow-y-auto md:p-8">
-        <div className="mx-auto w-full max-w-7xl">{children}</div>
+      <main className="relative min-w-0 flex-1 overflow-x-hidden p-4 md:h-screen md:overflow-y-auto md:p-8">
+        <div className="mx-auto flex min-h-full w-full max-w-7xl flex-col">{children}</div>
       </main>
     </div>
   );
