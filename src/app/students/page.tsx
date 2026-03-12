@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Edit2, Plus, Search, X } from 'lucide-react';
+import { Edit2, Plus, Search, Trash2, X } from 'lucide-react';
 import SetupNotice from '@/components/SetupNotice';
-import { createStudent, listStudents, updateStudent } from '@/lib/data';
+import { createStudent, deleteStudent, listStudents, updateStudent } from '@/lib/data';
 import { isSupabaseConfigured } from '@/lib/supabase';
 import type { Student, StudentInput } from '@/lib/types';
 
@@ -18,6 +18,7 @@ export default function StudentsPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [deletingStudentId, setDeletingStudentId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const loadStudentsFromSupabase = async () => {
@@ -46,6 +47,33 @@ export default function StudentsPage() {
   const closeModal = () => {
     setIsModalOpen(false);
     setEditingStudent(null);
+  };
+
+  const handleDeleteStudent = (student: Student) => {
+    void (async () => {
+      const confirmed = window.confirm(
+        `Delete ${student.name}? This will also remove their payments and attendance history.`,
+      );
+
+      if (!confirmed) {
+        return;
+      }
+
+      try {
+        setDeletingStudentId(student.id);
+        setError(null);
+        await deleteStudent(student.id);
+        setStudents((current) => current.filter((entry) => entry.id !== student.id));
+
+        if (editingStudent?.id === student.id) {
+          closeModal();
+        }
+      } catch (deleteError) {
+        setError(deleteError instanceof Error ? deleteError.message : 'Unable to delete the student.');
+      } finally {
+        setDeletingStudentId(null);
+      }
+    })();
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -153,16 +181,28 @@ export default function StudentsPage() {
                   {student.level}
                 </span>
               </div>
-              <button
-                onClick={() => {
-                  setEditingStudent(student);
-                  setIsModalOpen(true);
-                }}
-                className="text-gray-400 transition-colors hover:text-[var(--color-primary-500)]"
-                aria-label={`Edit ${student.name}`}
-              >
-                <Edit2 size={16} />
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEditingStudent(student);
+                    setIsModalOpen(true);
+                  }}
+                  className="text-gray-400 transition-colors hover:text-[var(--color-primary-500)]"
+                  aria-label={`Edit ${student.name}`}
+                >
+                  <Edit2 size={16} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleDeleteStudent(student)}
+                  disabled={deletingStudentId === student.id}
+                  className="text-gray-400 transition-colors hover:text-[var(--color-danger-500)] disabled:cursor-not-allowed disabled:opacity-50"
+                  aria-label={`Delete ${student.name}`}
+                >
+                  <Trash2 size={16} />
+                </button>
+              </div>
             </div>
 
             <div className="mt-4 space-y-3">

@@ -100,6 +100,15 @@ export async function updateStudent(id: string, input: StudentInput) {
   return data as Student;
 }
 
+export async function deleteStudent(id: string) {
+  const supabase = requireSupabase();
+  const { error } = await supabase.from('students').delete().eq('id', id);
+
+  if (error) {
+    throw new Error(error.message);
+  }
+}
+
 export async function listPayments() {
   const supabase = requireSupabase();
   const { data, error } = await supabase
