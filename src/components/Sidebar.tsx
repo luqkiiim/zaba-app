@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Users, CalendarDays, Wallet, Settings } from 'lucide-react';
+import { CalendarDays, LayoutDashboard, Users, Wallet } from 'lucide-react';
 
 const navItems = [
   { name: 'Dashboard', href: '/', icon: LayoutDashboard },
@@ -54,14 +54,6 @@ export default function Sidebar({ className }: SidebarProps) {
           );
         })}
       </nav>
-
-      {/* Footer / Settings */}
-      <div className="p-4 border-t border-[var(--color-surface-border)]">
-        <button className="flex items-center gap-3 px-4 py-3 rounded-lg w-full text-left text-gray-400 hover:text-white hover:bg-[var(--color-surface-hover)] transition-colors">
-          <Settings size={20} />
-          <span className="font-medium">Settings</span>
-        </button>
-      </div>
     </aside>
   );
 }
