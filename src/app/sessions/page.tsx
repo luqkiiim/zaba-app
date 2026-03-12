@@ -302,8 +302,8 @@ export default function SessionsPage() {
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm animate-fade-in">
-          <div className="glass-panel relative w-full max-w-md p-6 shadow-2xl">
+        <div className="modal-overlay animate-fade-in">
+          <div className="modal-card glass-panel relative max-w-md p-6 shadow-2xl">
             <button
               onClick={() => setIsModalOpen(false)}
               className="absolute right-4 top-4 text-gray-400 hover:text-white"
@@ -390,8 +390,8 @@ export default function SessionsPage() {
       )}
 
       {isEditModalOpen && selectedSession && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm animate-fade-in">
-          <div className="glass-panel relative w-full max-w-md p-6 shadow-2xl">
+        <div className="modal-overlay animate-fade-in">
+          <div className="modal-card glass-panel relative max-w-md p-6 shadow-2xl">
             <button onClick={closeEditModal} className="absolute right-4 top-4 text-gray-400 hover:text-white">
               <X size={20} />
             </button>
@@ -476,8 +476,8 @@ export default function SessionsPage() {
       )}
 
       {isAttendanceModalOpen && selectedSession && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm animate-fade-in">
-          <div className="glass-panel relative w-full max-w-md border-t-2 border-[var(--color-primary-500)] p-6 shadow-2xl">
+        <div className="modal-overlay animate-fade-in">
+          <div className="modal-card glass-panel relative max-w-md border-t-2 border-[var(--color-primary-500)] p-6 shadow-2xl">
             <button
               onClick={closeAttendanceModal}
               className="absolute right-4 top-4 text-gray-400 hover:text-white"

@@ -61,6 +61,36 @@ body {
   border-radius: 1rem;
 }
 
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+  padding-top: max(1.25rem, calc(env(safe-area-inset-top) + 1rem));
+  padding-right: 1rem;
+  padding-bottom: max(1rem, calc(env(safe-area-inset-bottom) + 1rem));
+  padding-left: 1rem;
+  background: rgb(0 0 0 / 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.modal-card {
+  width: 100%;
+  margin: auto 0;
+  max-height: calc(100dvh - max(2.5rem, env(safe-area-inset-top) + env(safe-area-inset-bottom) + 2rem));
+  overflow-y: auto;
+}
+
+@media (min-width: 640px) {
+  .modal-overlay {
+    align-items: center;
+  }
+}
+
 .glass-panel-hover {
   transition: all 0.2s ease-in-out;
 }
