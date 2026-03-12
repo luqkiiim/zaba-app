@@ -67,12 +67,12 @@ body {
   z-index: 50;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  overflow-y: auto;
-  padding-top: max(0.875rem, calc(env(safe-area-inset-top) + 0.75rem));
-  padding-right: 0.75rem;
-  padding-bottom: max(0.875rem, calc(env(safe-area-inset-bottom) + 0.75rem));
-  padding-left: 0.75rem;
+  align-items: flex-end;
+  overflow: hidden;
+  padding-top: max(0.5rem, env(safe-area-inset-top));
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
   background: rgb(0 0 0 / 0.6);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -80,17 +80,42 @@ body {
 
 .modal-card {
   width: 100%;
-  margin: 0;
+  max-width: 100%;
   min-width: 0;
+  min-height: calc(100svh - env(safe-area-inset-top));
+  max-height: calc(100svh - env(safe-area-inset-top));
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  padding-bottom: max(1rem, calc(env(safe-area-inset-bottom) + 1rem));
 }
 
 @media (min-width: 640px) {
   .modal-overlay {
     align-items: center;
+    overflow-y: auto;
+    padding-top: max(1rem, calc(env(safe-area-inset-top) + 0.75rem));
+    padding-right: 1rem;
+    padding-bottom: max(1rem, calc(env(safe-area-inset-bottom) + 0.75rem));
+    padding-left: 1rem;
   }
 
   .modal-card {
     margin: auto 0;
+    max-width: 32rem;
+    min-height: auto;
+    max-height: calc(100dvh - max(2rem, env(safe-area-inset-top) + env(safe-area-inset-bottom) + 1.5rem));
+    border-radius: 1rem;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    padding-bottom: 1.5rem;
   }
 }
 
@@ -100,12 +125,21 @@ body {
   width: 100%;
   max-width: 100%;
   min-width: 0;
+  display: block;
   box-sizing: border-box;
+}
+
+.modal-card form > div,
+.modal-card .grid > div {
+  min-width: 0;
 }
 
 .modal-card input[type="date"],
 .modal-card input[type="time"] {
+  appearance: none;
+  -webkit-appearance: none;
   min-inline-size: 0;
+  inline-size: 100%;
   font-size: 16px;
 }
 
