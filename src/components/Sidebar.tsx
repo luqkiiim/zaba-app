@@ -13,9 +13,10 @@ const navItems = [
 
 interface SidebarProps {
   className?: string;
+  onNavigate?: () => void;
 }
 
-export default function Sidebar({ className }: SidebarProps) {
+export default function Sidebar({ className, onNavigate }: SidebarProps) {
   const pathname = usePathname();
 
   return (
@@ -42,6 +43,7 @@ export default function Sidebar({ className }: SidebarProps) {
             <Link 
               key={item.href} 
               href={item.href}
+              onClick={onNavigate}
               className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 group ${
                 isActive 
                   ? 'bg-[var(--color-primary-500)]/10 text-[var(--color-primary-500)] border border-[var(--color-primary-500)]/20 shadow-[inset_0_0_20px_var(--color-primary-glow)]' 
