@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { AlertTriangle, CalendarDays, ChevronRight, TrendingUp, Users } from 'lucide-react';
 import SetupNotice from '@/components/SetupNotice';
 import { listDashboardData } from '@/lib/data';
+import { formatCurrency } from '@/lib/currency';
 import { formatDateLabel, isInSameMonth, toDateInputValue, toSessionTimestamp } from '@/lib/date';
 import { isSupabaseConfigured } from '@/lib/supabase';
 import type { Payment, Session, Student } from '@/lib/types';
@@ -116,7 +117,7 @@ export default function Home() {
         />
         <StatCard
           title="Monthly Revenue"
-          value={`$${thisMonthRevenue.toFixed(0)}`}
+          value={formatCurrency(thisMonthRevenue, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
           icon={<TrendingUp className="text-[var(--color-primary-500)]" size={24} />}
           trend="This month"
           delay="stagger-4"

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { AlertCircle, CheckCircle2, Plus, TrendingUp, Wallet, X } from 'lucide-react';
 import SetupNotice from '@/components/SetupNotice';
+import { formatCurrency } from '@/lib/currency';
 import { createPayment, listPayments, listStudents } from '@/lib/data';
 import { formatDateLabel, isInSameMonth, toDateInputValue } from '@/lib/date';
 import { isSupabaseConfigured } from '@/lib/supabase';
@@ -120,7 +121,7 @@ export default function PaymentsPage() {
             <h3 className="text-sm font-medium text-gray-400">Total Revenue (All Time)</h3>
             <Wallet className="text-[var(--color-primary-500)]" size={20} />
           </div>
-          <p className="text-3xl font-bold">${totalRevenue.toFixed(2)}</p>
+          <p className="text-3xl font-bold">{formatCurrency(totalRevenue)}</p>
         </div>
 
         <div className="glass-panel border-t-4 border-t-[var(--color-secondary-500)] p-6">
@@ -128,7 +129,7 @@ export default function PaymentsPage() {
             <h3 className="text-sm font-medium text-gray-400">This Month</h3>
             <TrendingUp className="text-[var(--color-secondary-500)]" size={20} />
           </div>
-          <p className="text-3xl font-bold">${thisMonthRevenue.toFixed(2)}</p>
+          <p className="text-3xl font-bold">{formatCurrency(thisMonthRevenue)}</p>
         </div>
 
         <div className="glass-panel border-t-4 border-t-[var(--color-warning-500)] bg-[var(--color-warning-500)]/5 p-6">
@@ -180,7 +181,7 @@ export default function PaymentsPage() {
                       </td>
                       <td className="p-4 font-medium text-white">{student?.name || 'Unknown Student'}</td>
                       <td className="p-4 font-bold text-[var(--color-primary-500)]">
-                        +${payment.amount.toFixed(2)}
+                        +{formatCurrency(payment.amount)}
                       </td>
                       <td className="p-4">
                         <span
@@ -238,7 +239,7 @@ export default function PaymentsPage() {
 
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-gray-400">Amount ($)</label>
+                  <label className="mb-1 block text-sm font-medium text-gray-400">Amount (RM)</label>
                   <input
                     required
                     name="amount"
